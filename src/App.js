@@ -1,11 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import LoginUser from './components/LoginUser';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom';
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<LoginUser />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
