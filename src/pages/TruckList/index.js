@@ -12,6 +12,7 @@ import FilterModal from './FilterModal';
 import truck from '../../api/truck';
 import useDebounce from '../../hooks/useDebounce';
 import TransporterMenu from '../../components/TransporterMenu';
+import { Link } from 'react-router-dom';
 
 export default function TruckList() {
   //
@@ -59,7 +60,7 @@ export default function TruckList() {
   const columns = React.useMemo(
     () => [
       {
-        accessorFn: (row) => row.license_number,
+        accessorFn: (row) => <Link to={`/trucks/${row.id}`}>{row.license_number}</Link>,
         id: 'license',
         cell: (info) => info.getValue(),
         header: () => <span>License Number</span>,

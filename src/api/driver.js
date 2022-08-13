@@ -3,6 +3,16 @@ import axios from 'axios';
 const api = 'http://localhost:8000/';
 
 class Driver {
+  async getDetail() {
+    return {
+      id: 'id1',
+      driver_name: 'driver_name1',
+      phone_number: 'phone_number1',
+      created_at: 'created_at1',
+      status: 'status1',
+    };
+  }
+
   async getDrivers({ name } = {}) {
     let data = [
       {

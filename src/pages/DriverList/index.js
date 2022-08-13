@@ -12,6 +12,7 @@ import FilterModal from './FilterModal';
 import driver from '../../api/driver';
 import useDebounce from '../../hooks/useDebounce';
 import TransporterMenu from '../../components/TransporterMenu';
+import { Link } from 'react-router-dom';
 
 export default function DriverList() {
   //
@@ -50,7 +51,7 @@ export default function DriverList() {
   const columns = React.useMemo(
     () => [
       {
-        accessorFn: (row) => row.driver_name,
+        accessorFn: (row) => <Link to={`/drivers/${row.id}`}>{row.driver_name}</Link>,
         id: 'name',
         cell: (info) => info.getValue(),
         header: () => <span>Driver Name</span>,
