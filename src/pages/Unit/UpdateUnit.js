@@ -1,4 +1,5 @@
 import React from 'react'
+import Truck from '../../api/Truck';
 
 const UpdateUnit = () => {
     const handleTruck = (e) => {
@@ -7,27 +8,20 @@ const UpdateUnit = () => {
         let licenseType = document.getElementById('licenseType').value;
         let truckType = document.getElementById('truckType').value;
         let productionYear = document.getElementById('production').value;
-        let stnk = document.getElementById('stnk').value;
-        let kir = document.getElementById('kir').value;
-        if(licenseNumber === null || licenseType === null || truckType === null ) {
-          alert('Please fill the mandatory fields')
-        } else {
-          const newData = new FormData()
-          newData.append('licenseNumber', licenseNumber)
-          newData.append('licenseType', licenseType)
-          newData.append('truckType', truckType)
-          newData.append('productionYear', productionYear)
-          newData.append('stnk', stnk)
-          newData.append('kir', kir)
-          axios.post(`${api}/truck`, newData, {
-          }).then(res => {
+        let updateTruck = new Truck({
+            licenseNumber: licenseNumber,
+            licenseType: licenseType,
+            truckType: truckType,
+            productionYear: productionYear
+        })
+        updateTruck.updateTruck()
+        .then(res => {
             console.log(res)
-            window.location.href = '/truck'
-            alert('Unit successfully saved!')
-          }).catch(err => {
+            alert('Unit successfully updated')
+        })
+        .catch(err => {
             console.log(err)
-          })
-        }
+        })
       }
       return (
         <div className='flex flex-col w-full h-screen justify-center items-center'>

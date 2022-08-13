@@ -37,8 +37,6 @@ class Truck {
             licenseType: this.licenseType,
             truckType: this.truckType,
             productionYear: this.productionYear,
-            stnk: this.stnk,
-            kir: this.kir
         })
     }
 }
