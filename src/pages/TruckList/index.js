@@ -9,7 +9,7 @@ import { makeData } from './makeData';
 import { Button, ButtonGroup, Col, Container, Form, Row } from 'react-bootstrap';
 import Layout from '../../components/Layout';
 import FilterModal from './FilterModal';
-import truck from '../../api/Truck';
+import truck from '../../api/truck';
 import useDebounce from '../../hooks/useDebounce';
 
 export default function TruckList() {
