@@ -51,7 +51,7 @@ export default function DriverList() {
   const columns = React.useMemo(
     () => [
       {
-        accessorFn: (row) => <Link to={`/drivers/${row.id}`}>{row.driver_name}</Link>,
+        accessorFn: (row) => <Link to={`/transporter/drivers/${row.id}`}>{row.driver_name}</Link>,
         id: 'name',
         cell: (info) => info.getValue(),
         header: () => <span>Driver Name</span>,

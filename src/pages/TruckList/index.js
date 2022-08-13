@@ -60,7 +60,7 @@ export default function TruckList() {
   const columns = React.useMemo(
     () => [
       {
-        accessorFn: (row) => <Link to={`/trucks/${row.id}`}>{row.license_number}</Link>,
+        accessorFn: (row) => <Link to={`/transporter/trucks/${row.id}`}>{row.license_number}</Link>,
         id: 'license',
         cell: (info) => info.getValue(),
         header: () => <span>License Number</span>,

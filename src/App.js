@@ -10,10 +10,15 @@ function App() {
   return (
     <>
       <AnyRoute title="Login" exact path="/login" component={LoginUser} />
-      <AnyRoute title="Truck List" exact path="/trucks" component={TruckList} />
-      <AnyRoute title="Truck Detail" exact path="/trucks/:id" component={TruckDetail} />
-      <AnyRoute title="Driver List" exact path="/drivers" component={DriverList} />
-      <AnyRoute title="Driver Detail" exact path="/drivers/:id" component={DriverDetail} />
+      <AnyRoute title="Truck List" exact path="/transporter/trucks" component={TruckList} />
+      <AnyRoute title="Truck Detail" exact path="/transporter/trucks/:id" component={TruckDetail} />
+      <AnyRoute title="Driver List" exact path="/transporter/drivers" component={DriverList} />
+      <AnyRoute
+        title="Driver Detail"
+        exact
+        path="/transporter/drivers/:id"
+        component={DriverDetail}
+      />
     </>
   );
 }
