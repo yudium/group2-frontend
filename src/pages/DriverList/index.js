@@ -11,6 +11,7 @@ import Layout from '../../components/Layout';
 import FilterModal from './FilterModal';
 import driver from '../../api/driver';
 import useDebounce from '../../hooks/useDebounce';
+import TransporterMenu from '../../components/TransporterMenu';
 
 export default function DriverList() {
   //
@@ -92,13 +93,15 @@ export default function DriverList() {
 
   return (
     <Layout>
+      <TransporterMenu />
+
       <Row>
         <Col></Col>
         <Col sm={4}>
           <Form.Group>
             <Form.Control
               type="text"
-              placeholder="Search License Number"
+              placeholder="Search by name"
               onChange={(e) => setSearch(e.target.value)}
             />
           </Form.Group>

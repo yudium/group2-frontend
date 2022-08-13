@@ -11,6 +11,7 @@ import Layout from '../../components/Layout';
 import FilterModal from './FilterModal';
 import truck from '../../api/truck';
 import useDebounce from '../../hooks/useDebounce';
+import TransporterMenu from '../../components/TransporterMenu';
 
 export default function TruckList() {
   //
@@ -101,6 +102,8 @@ export default function TruckList() {
 
   return (
     <Layout>
+      <TransporterMenu />
+
       {showFilter && (
         <FilterModal
           onChange={changeTruckTypeFilter}
