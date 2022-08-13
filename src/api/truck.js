@@ -1,4 +1,7 @@
 import axios from 'axios'
+
+const api = 'http://localhost:8000/';
+
 class Truck {
     getTruck = () => {
         return axios.get(`${api}/truck`)
@@ -54,5 +57,5 @@ class Truck {
     }
 }
 
-const Truck = new Truck();
-export default Truck
+const truck = new Truck();
+export default truck
