@@ -1,40 +1,48 @@
 import axios from 'axios';
 
-const api = 'http://localhost:8000/';
+const api = 'http://localhost:8000';
 
 class Driver {
   async getDetail() {
+    // waiting backend
+    // let data = await axios.get(`${api}/api/truck/get-one/${id}`)
+    // console.log(data);
+
     return {
+    //  ...data,
       id: 'id1',
-      driver_name: 'driver_name1',
-      phone_number: 'phone_number1',
-      created_at: 'created_at1',
+      driver_name: 'Abdul Rahman',
+      phone_number: '0822 5189 158',
+      created_at: '12-09-2022 15:00:00',
       status: 'status1',
     };
   }
 
   async getDrivers({ name } = {}) {
+    // let data = await axios.get(`${api}/api/driver`)
+    // console.log(data);
+
     let data = [
       {
         id: 'id1',
-        driver_name: 'driver_name1',
-        phone_number: 'phone_number1',
-        created_at: 'created_at1',
-        status: 'status1',
+        driver_name: 'Abdul Rahman',
+        phone_number: '0822 5189 158',
+        created_at: '12-09-2022 15:00:00',
+        status: 'Active',
       },
       {
         id: 'id2',
-        driver_name: 'driver_name2',
-        phone_number: 'phone_number2',
-        created_at: 'created_at2',
-        status: 'status2',
+        driver_name: 'Rizki Gunardi',
+        phone_number: '0822 222 333',
+        created_at: '12-09-2022 16:00:00',
+        status: 'Active',
       },
       {
-        id: 'id1',
-        driver_name: 'driver_name1',
-        phone_number: 'phone_number1',
-        created_at: 'created_at1',
-        status: 'status1',
+        id: 'id3',
+        driver_name: 'Hendi Ginanjar',
+        phone_number: '0822 222 444',
+        created_at: '12-09-2022 16:30:00',
+        status: 'Inactive',
       },
     ];
 

@@ -1,60 +1,64 @@
 import axios from 'axios';
 
-const api = 'http://localhost:5000/';
+const api = 'http://localhost:5000';
 
 class Truck {
   getTruck = () => {
     return axios.get(`${api}/truck`);
   };
   addTruck = (newData) => {
-    return axios.post(`${api}/truck`, { newData });
+    return axios.post(`${api}/api/truck/add`, { newData });
   };
   updateTruck = (updatedData) => {
     return axios.put(`${api}/truck`, { updatedData });
   };
 
   async getTruckTypes() {
-    return ['truck_type1', 'truck_type2'];
+    return ['Tronton', 'MPV'];
   }
 
   async getDetail(id) {
-    return {
-      id: 'id',
-      license_number: 'license_number1',
-      truck_type: 'truck_type1',
-      plate_type: 'plate_type1',
-      production_year: 'production_year1',
+    // let data = await axios.get(`${api}/api/truck/get-one/${id}`);
+    // console.log(data);
 
-      //request:
+    return {
+      // ...data,
+      id: 'id',
+      license_number: 'B 222 C',
+      truck_type: 'Tronton',
+      plate_type: 'Yellow',
+      production_year: '2012',
+
       stnk: '',
       kir: '',
     };
   }
 
   async getTrucks({ truckTypesFilter, licenseNumber } = {}) {
-    // let data = await axios.get(`${api}/api/trucks`)
+    // let data = await axios.get(`${api}/api/truck/all`);
+    // console.log(data);
     // data = data.data;
     let data = [
       {
         id: 'id',
-        license_number: 'license_number1',
-        truck_type: 'truck_type1',
-        plate_type: 'plate_type1',
-        production_year: 'production_year1',
+        license_number: 'B 222 C',
+        truck_type: 'Tronton',
+        plate_type: 'Yellow',
+        production_year: '2012',
       },
       {
         id: 'id',
-        license_number: 'license_number1',
-        truck_type: 'truck_type1',
-        plate_type: 'plate_type1',
-        production_year: 'production_year1',
+        license_number: 'B 333 F',
+        truck_type: 'Tronton',
+        plate_type: 'Black',
+        production_year: '2014',
       },
       {
         id: 'id',
-        license_number: 'license_number2',
-        truck_type: 'truck_type2',
-        plate_type: 'plate_type2',
-        production_year: 'production_year2',
+        license_number: 'B 444 Z',
+        truck_type: 'MPV',
+        plate_type: 'Black',
+        production_year: '2016',
       },
     ];
 

@@ -1,6 +1,13 @@
+import axios from 'axios';
+
 class Token {
   constructor() {
     this.token = '';
+    this.populateFromBrowser()
+  }
+
+  populateFromBrowser() {
+    this.token = localStorage.getItem("token") || ''
   }
 
   getToken() {
@@ -8,20 +15,34 @@ class Token {
   }
 
   setToken(t) {
+    document.cookie = "token=" + t;
     this.token = t;
+    localStorage.setItem("token", t)
   }
 }
 
 export const transporterToken = new Token();
 export const shipperToken = new Token();
 
+const api = 'http://localhost:5000';
+
 class Auth {
   async loginAsTransporter() {
-    transporterToken.setToken('transporterToken');
+    let data = await axios.post(`${api}/auth/login`, {
+      email: 'transporter@gmail.com',
+      password: '123',
+    });
+
+    transporterToken.setToken(data.token);
   }
 
   async loginAsShipper() {
-    transporterToken.setToken('transporterToken');
+    let data = await axios.post(`${api}/auth/login`, {
+      email: 'shipper@gmail.com',
+      password: '123',
+    });
+
+    transporterToken.setToken(data.token);
   }
 }
 
