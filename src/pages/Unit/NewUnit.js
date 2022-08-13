@@ -13,41 +13,24 @@ const NewUnit = () => {
     let kir = document.getElementById('kir').value;
     if(licenseNumber === null || licenseType === null || truckType === null ) {
       alert('Please fill the mandatory fields')
-    } else {
-      let newTruck = new Truck({
-        licenseNumber: licenseNumber,
-        licenseType: licenseType,
-        truckType: truckType,
-        productionYear: productionYear,
-        stnk: stnk,
-        kir: kir
-      });
-      newTruck.addTruck()
-      .then(res => {
+    } else {     
+      const newData = new FormData()
+      newData.append('licenseNumber', licenseNumber)
+      newData.append('licenseType', licenseType)
+      newData.append('truckType', truckType)
+      newData.append('productionYear', productionYear)
+      newData.append('stnk', stnk)
+      newData.append('kir', kir)
+      Truck.addTruck(newData).then(res => {
         console.log(res)
-        window.location.href = '/truck'
+        window.location.href = '/transporter'
         alert('Unit successfully saved!')
       }).catch(err => {
         console.log(err)
       })
     }
-    //   const newData = new FormData()
-    //   newData.append('licenseNumber', licenseNumber)
-    //   newData.append('licenseType', licenseType)
-    //   newData.append('truckType', truckType)
-    //   newData.append('productionYear', productionYear)
-    //   newData.append('stnk', stnk)
-    //   newData.append('kir', kir)
-    //   axios.post(`${api}/truck`, newData, {
-    //   }).then(res => {
-    //     console.log(res)
-    //     window.location.href = '/truck'
-    //     alert('Unit successfully saved!')
-    //   }).catch(err => {
-    //     console.log(err)
-    //   })
-    // }
   }
+  
   return (
     <div className='flex flex-col w-full h-screen justify-center items-center'>
         <h1 className='text-3xl'>Add New Unit</h1>
