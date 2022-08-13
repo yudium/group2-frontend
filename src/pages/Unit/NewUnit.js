@@ -1,6 +1,8 @@
 import React from 'react'
+import Truck from '../../api/Truck';
 
 const NewUnit = () => {
+  
   const handleTruck = (e) => {
     e.preventDefault();
     let licenseNumber = document.getElementById('licenseNumber').value;
@@ -9,18 +11,19 @@ const NewUnit = () => {
     let productionYear = document.getElementById('production').value;
     let stnk = document.getElementById('stnk').value;
     let kir = document.getElementById('kir').value;
-    if(licenseNumber === null || licenseType === null || truckType === null || productionYear === null || stnk === null || kir === null) {
-      alert('Please fill all the fields')
+    if(licenseNumber === null || licenseType === null || truckType === null ) {
+      alert('Please fill the mandatory fields')
     } else {
-      const newData = new FormData()
-      newData.append('licenseNumber', licenseNumber)
-      newData.append('licenseType', licenseType)
-      newData.append('truckType', truckType)
-      newData.append('productionYear', productionYear)
-      newData.append('stnk', stnk)
-      newData.append('kir', kir)
-      axios.post(`${api}/truck`, newData, {
-      }).then(res => {
+      let newTruck = new Truck({
+        licenseNumber: licenseNumber,
+        licenseType: licenseType,
+        truckType: truckType,
+        productionYear: productionYear,
+        stnk: stnk,
+        kir: kir
+      });
+      newTruck.addTruck()
+      .then(res => {
         console.log(res)
         window.location.href = '/truck'
         alert('Unit successfully saved!')
@@ -28,6 +31,22 @@ const NewUnit = () => {
         console.log(err)
       })
     }
+    //   const newData = new FormData()
+    //   newData.append('licenseNumber', licenseNumber)
+    //   newData.append('licenseType', licenseType)
+    //   newData.append('truckType', truckType)
+    //   newData.append('productionYear', productionYear)
+    //   newData.append('stnk', stnk)
+    //   newData.append('kir', kir)
+    //   axios.post(`${api}/truck`, newData, {
+    //   }).then(res => {
+    //     console.log(res)
+    //     window.location.href = '/truck'
+    //     alert('Unit successfully saved!')
+    //   }).catch(err => {
+    //     console.log(err)
+    //   })
+    // }
   }
   return (
     <div className='flex flex-col w-full h-screen justify-center items-center'>
@@ -67,7 +86,7 @@ const NewUnit = () => {
                 <input id='kir' type='file' className='ml-24'/>
               </div>
               <div className='flex-row justify-end items-end text-rig ml-12 my-2'>
-                <button className= 'flex justify-center text-lg rounded-lg'>Save Unit</button>
+                <button className= 'flex justify-center text-lg rounded-lg'>Add Unit</button>
               </div>
             </form>
         </div>
